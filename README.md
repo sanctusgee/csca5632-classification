@@ -10,8 +10,9 @@ Materials for the CSCA5632 course focused on unsupervised learning. The project 
 
 ## Repository Structure
 - `README.md`: this file --> Overview of the project.
-- `report.pdf`: A detailed report of the project.
+- `report.pdf`: A detailed report of the project (bbc_news and movies).
 - `data/`: Contains datasets used for the project.
 - `visualization/`: Contains visualizations generated during the project.
-- `.week4_classification.ipynb`: Jupyter notebook for the project.
+- `bbc_news_articles.ipynb`: Jupyter notebooks of BBC news articles.
+- `movie_ratings.ipynb`: Jupyter notebooks of movie ratings.
     
