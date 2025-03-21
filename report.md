@@ -178,12 +178,16 @@ We applied NMF with latent factors of 10, 20, 30, and 40. The RMSE for each sett
 | 40             | 1.2350  |
 
 The best RMSE (~1.2100) was achieved with 20 components, though the improvements over other settings were marginal.
+![nmf_for_movies.png](visualizations/nmf_for_movies.png)
 
 #### Baseline Predictor
 
 Using the global mean rating as the predictor, the RMSE was found to be 1.2500. While NMF provides modest improvements, the gap is not substantial.
 
----
+____
+___
+
+
 
 ## 5. Discussion
 
@@ -219,6 +223,21 @@ The techniques and insights from this study have wide-ranging applications:
 - **Financial Services:**  
   Document classification and recommender systems can help in risk assessment, fraud detection, and personalized financial product recommendations.
 
+### 5.4 Observations:
+ - The RMSE of the NMF model varies with the number of latent factors. In some settings, the improvement over the simple global mean baseline is small.
+
+### 5.5 Limitations of sklearn’s NMF:
+ - **Sensitivity to Initialization:** Despite using NNDSVD, the model may converge to a suboptimal local minimum.
+ - **Handling Missing Data:** Filling missing ratings with 0 is not ideal since 0 can be misinterpreted as an actual rating, potentially biasing the factorization.
+ - **Sparsity Modeling:** The factorization does not explicitly model the sparse nature of the ratings matrix.
+ 
+### 5.6 Potential Improvements:
+ - Use multiple random restarts or more advanced initialization methods to improve convergence.
+ - Apply imputation techniques or use methods that inherently model missing data (e.g., probabilistic matrix factorization).
+ - Explore hybrid approaches that combine matrix factorization with baseline or similarity-based predictors.
+
+These improvements could lead to better performance in practice.
+
 ---
 
 ## 6. Future Work
@@ -231,30 +250,12 @@ Based on our findings, future research directions include:
 
 ---
 
-# %% [markdown]
-# ## 7. Discussion for Part 2
-#
-# **Observations:**
-# - The RMSE of the NMF model varies with the number of latent factors. In some settings, the improvement over the simple global mean baseline is small.
-#
-# **Limitations of sklearn’s NMF:**
-# - **Sensitivity to Initialization:** Despite using NNDSVD, the model may converge to a suboptimal local minimum.
-# - **Handling Missing Data:** Filling missing ratings with 0 is not ideal since 0 can be misinterpreted as an actual rating, potentially biasing the factorization.
-# - **Sparsity Modeling:** The factorization does not explicitly model the sparse nature of the ratings matrix.
-#
-# **Potential Improvements:**
-# - Use multiple random restarts or more advanced initialization methods to improve convergence.
-# - Apply imputation techniques or use methods that inherently model missing data (e.g., probabilistic matrix factorization).
-# - Explore hybrid approaches that combine matrix factorization with baseline or similarity-based predictors.
-#
-# These improvements could lead to better performance in practice.
 
-# %% [markdown]
 
-## 8. Conclusion
+## 7. Conclusion
 
 This report presented an in-depth analysis of two machine learning pipelines using matrix factorization techniques. For BBC news classification, the supervised TF-IDF approach outperformed the unsupervised NMF method when abundant labels are available; however, NMF offers interpretability and potential in low-label scenarios. In the movie ratings task, while NMF provided modest improvements over a simple baseline, its sensitivity to initialization and missing data treatment poses challenges. Overall, the insights and methodologies discussed herein offer valuable directions for deploying such techniques across diverse domains, from recommender systems to business intelligence and beyond.
-
+I reallt enjoyed working on this project and I look forward to applying these techniques in future projects.
 ---
 
 
